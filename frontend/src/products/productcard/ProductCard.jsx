@@ -152,7 +152,7 @@ const products = [
 
 const ProductCarousel = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto py-10">
+    <div className="w-full max-w-6xl mx-auto py-10 ">
       <h1 className="header"> OUR PRODUCTS</h1>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]} // ✅ Autoplay included

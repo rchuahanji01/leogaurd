@@ -76,3 +76,8 @@
   justify-content: center;
   margin: 50px;
 }
+
+.main{
+    background-color:rgb(243, 239, 239);
+    padding: 40px;
+}

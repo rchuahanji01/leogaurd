@@ -1,4 +1,4 @@
-/* Navbar wrapper */
+Navbar wrapper
 .navbar {
   position: fixed;
   top: 0;
@@ -152,4 +152,31 @@
 .navbar-scrolled {
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown */
+.dropdown .drop-toggle {
+  cursor: pointer;
+  font-weight: 500;
+  color: #000;
+  padding: 8px 10px;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* attach directly below parent */
+  left: 0;
+  min-width: 180px;
+  background: white;
+  border-radius: 5px;
+  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
 }

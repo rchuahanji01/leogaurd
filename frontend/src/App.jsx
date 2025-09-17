@@ -12,7 +12,7 @@ import Home from "./pages/home/Home";
 // Product Subpages
 import SkinProducts from "./pages/products/skinproduct/SkinProducts";
 import HairProducts from "./pages/products/hairproduct/HairProducts";
-
+import Footer from "./components/footer/Footer";
 function App() {
   return (
     <Router>
@@ -30,6 +30,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} /> */}
       </Routes>
+      <Footer/>
     </Router>
   );
 }
