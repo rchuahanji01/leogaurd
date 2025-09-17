@@ -1,0 +1,78 @@
+/* Container padding */
+.swiper-container {
+  padding: 20px 0;
+}
+
+/* Card styling */
+.swiper-slide div {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Card hover effect */
+.swiper-slide div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Product image */
+.swiper-slide img {
+  height: 230px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* Product label */
+.swiper-slide h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Navigation arrows color */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #1bfe4d; /* Primary green */
+}
+
+/* Pagination dots color */
+.swiper-pagination-bullet {
+  background: #cccccc;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #1bfe4d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .swiper-slide img {
+    height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img {
+    height: 100px;
+  }
+  .swiper-slide h3 {
+    font-size: 0.95rem;
+  }
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
