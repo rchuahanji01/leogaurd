@@ -1,37 +1,52 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-
-// Pages
-import Home from "./pages/home/Home";
-// import About from "./pages/About";
-// import Products from "./pages/Products";
-// import Blogs from "./pages/Blogs";
-// import Contact from "./pages/Contact";
-// import Login from "./pages/Login";
-
-// Product Subpages
-import SkinProducts from "./pages/products/skinproduct/SkinProducts";
-import HairProducts from "./pages/products/hairproduct/HairProducts";
 import Footer from "./components/footer/Footer";
+
+import Home from "./pages/home/Home";
+import Aboutus from "./pages/about/Aboutus";
+import Contact from "./pages/contacts/Contact";
+import Login from "./pages/login/Login";
+
+// Admin
+import AdminLayout from "./pages/admin/Admin";
+import { DashboardHome, Users, Products, Settings } from "./pages/admin/AdminRoutes";
+
 function App() {
   return (
     <Router>
-      {/* Navbar always visible */}
-      <Navbar />
-
-      {/* Page Routes */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} /> */}
-        <Route path="/products/skin" element={<SkinProducts />} />
-        <Route path="/products/hair" element={<HairProducts />} />
-        {/* <Route path="/blogs" element={<Blogs />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} /> */}
-      </Routes>
-      <Footer/>
+      <MainLayout />
     </Router>
+  );
+}
+
+function MainLayout() {
+  const location = useLocation();
+
+  // Hide navbar/footer on admin routes
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      {!isAdminRoute && <Navbar />}
+
+      <Routes>
+        {/* Normal Pages */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<Aboutus />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Admin Layout with Nested Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="users" element={<Users />} />
+          <Route path="products" element={<Products />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+
+      {!isAdminRoute && <Footer />}
+    </>
   );
 }
 
