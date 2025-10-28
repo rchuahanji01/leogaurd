@@ -1,0 +1,95 @@
+.company-intro {
+  padding: 60px 10%;
+  background-color: #fff;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #222;
+}
+
+/* Header Section */
+.intro-header h4 {
+  color: #c48a3d;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.intro-header .subtext {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+/* Tagline */
+.intro-quote h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.intro-quote h2 span {
+  color: #00a651;
+  font-style: italic;
+}
+
+.intro-quote p {
+  color: #555;
+  font-size: 1rem;
+  max-width: 650px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+
+/* Grid Section */
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+}
+
+.intro-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.intro-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.intro-text {
+  padding: 20px 25px;
+  text-align: left;
+}
+
+.intro-text h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.intro-text p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-quote h2 {
+    font-size: 1.5rem;
+  }
+
+  .intro-text {
+    text-align: center;
+  }
+}

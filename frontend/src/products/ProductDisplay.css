@@ -1,0 +1,127 @@
+/* 🌿 Base Page */
+.product-display {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+/* 🟢 Hero Banner */
+.hero-banner {
+  height: 150px;
+  background: linear-gradient(
+      rgba(0, 166, 81, 0.25),
+      rgba(0, 166, 81, 0.25)
+    ),
+    url("https://img.freepik.com/free-photo/abstract-blur-luxury-hospital-clinic-interior-background_1203-9949.jpg")
+      center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 20px;
+}
+
+.hero-banner h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧴 Product Section */
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+}
+
+/* 💫 Product Layout – no background, no card */
+.product-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  gap: 30px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.product-layout.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image section */
+.product-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+  width: 360px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.product-image img:hover {
+  transform: scale(1.04);
+}
+
+/* Content section */
+.product-content {
+  flex: 1.5;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.product-content h3 {
+  color: #00a651;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.product-content p,
+.product-content li {
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+}
+
+.product-content ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+/* 🧩 No Products */
+.no-products {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .product-layout,
+  .product-layout.reverse {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 30px 0;
+  }
+
+  .product-image img {
+    width: 260px;
+  }
+}

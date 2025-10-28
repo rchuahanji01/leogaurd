@@ -1,35 +1,30 @@
+
+
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
-// import "./Product.css";
-// import envvar from "../../../index";
+// import "./Haircare.css";
+// import envvar from "../../../../index";
 
-// const ProductManager = () => {
+// const Haircare = () => {
 //   const [showForm, setShowForm] = useState(false);
 //   const [files, setFiles] = useState([]);
 //   const [previews, setPreviews] = useState([]);
 //   const [editingId, setEditingId] = useState(null);
 //   const [products, setProducts] = useState([]);
 
- 
-
-//   const [categories, setCategories] = useState([]);
-
-// useEffect(() => {
-//   axios.get(`${envvar.baseurl}/category`).then((res) => setCategories(res.data));
-// }, []);
-
 //   const [formData, setFormData] = useState({
 //     name: "",
-//     ingredients: "",
 //     description: "",
-//     indications: "",
-//     category: "Hair Care",
+//     composition: "",
+//     category: "Haircare",
+//     packSize: "",
+//     keyPoints: "",
 //   });
 
-//   // 🔹 Fetch all products
+//   // 🧩 Fetch all Haircare products
 //   const fetchProducts = async () => {
 //     try {
-//       const res = await axios.get(`${envvar.baseurl}/product`);
+//       const res = await axios.get(`${envvar.baseurl}/product?category=Haircare`);
 //       setProducts(res.data);
 //     } catch (err) {
 //       console.error("Error fetching products:", err);
@@ -51,20 +46,7 @@
 //     setPreviews(selectedFiles.map((f) => URL.createObjectURL(f)));
 //   };
 
-//   const resetForm = () => {
-//     setFormData({
-//       name: "",
-//       ingredients: "",
-//       description: "",
-//       indications: "",
-//       category: "Hair Care",
-//     });
-//     setFiles([]);
-//     setPreviews([]);
-//     setEditingId(null);
-//   };
-
-//   // ➕ Add / ✏️ Update Product
+//   // 🧾 Submit or Update
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
@@ -73,26 +55,42 @@
 //       files.forEach((f) => data.append("images", f));
 
 //       if (editingId) {
+//         // ✏️ Update existing
 //         await axios.put(`${envvar.baseurl}/product/${editingId}`, data, {
 //           headers: { "Content-Type": "multipart/form-data" },
 //         });
 //         alert("✅ Product updated!");
 //       } else {
+//         // ➕ Add new
 //         await axios.post(`${envvar.baseurl}/product`, data, {
 //           headers: { "Content-Type": "multipart/form-data" },
 //         });
 //         alert("✅ New product added!");
 //       }
 
-//       resetForm();
 //       setShowForm(false);
+//       setFiles([]);
+//       setPreviews([]);
+//       setEditingId(null);
+//       resetForm();
 //       fetchProducts();
 //     } catch (err) {
 //       console.error("Error saving product:", err);
 //     }
 //   };
 
-//   // 🗑️ Delete
+//   const resetForm = () => {
+//     setFormData({
+//       name: "",
+//       description: "",
+//       composition: "",
+//       category: "Haircare",
+//       packSize: "",
+//       keyPoints: "",
+//     });
+//   };
+
+//   // 🗑️ Delete product
 //   const handleDelete = async (id) => {
 //     if (!window.confirm("Are you sure you want to delete this product?")) return;
 //     try {
@@ -104,44 +102,43 @@
 //     }
 //   };
 
-//   // ✏️ Edit
+//   // ✏️ Edit product
 //   const handleEdit = (product) => {
 //     setEditingId(product._id);
 //     setShowForm(true);
 //     setFormData({
 //       name: product.name,
-//       ingredients: product.ingredients,
 //       description: product.description,
-//       indications: product.indications.join(", "),
+//       composition: product.composition,
 //       category: product.category,
+//       packSize: product.packSize,
+//       keyPoints: product.keyPoints.join(", "),
 //     });
 //     setPreviews(product.images.map((img) => `http://localhost:4001${img}`));
 //   };
 
 //   return (
-//     <div className="product-manager-container">
-//       <div className="product-header">
-//         <h2>🧴 Product Manager</h2>
-//         <button
-//           className="add-btn"
-//           onClick={() => {
-//             setShowForm(!showForm);
-//             resetForm();
-//           }}
-//         >
+//     <div className="haircare-container">
+//       <div className="haircare-header">
+//         <h2>💇‍♀️ Haircare Products</h2>
+//         <button className="add-btn" onClick={() => {
+//           setShowForm(!showForm);
+//           resetForm();
+//           setEditingId(null);
+//         }}>
 //           {showForm ? "Close Form" : "+ Add Product"}
 //         </button>
 //       </div>
 
-//       {/* 📋 Product Table */}
+//       {/* Product Table */}
 //       <div className="product-table">
 //         <table>
 //           <thead>
 //             <tr>
 //               <th>Image</th>
 //               <th>Name</th>
-//               <th>Category</th>
-//               <th>Ingredients</th>
+//               <th>Pack</th>
+//               <th>Composition</th>
 //               <th>Actions</th>
 //             </tr>
 //           </thead>
@@ -159,81 +156,31 @@
 //                     )}
 //                   </td>
 //                   <td>{p.name}</td>
-//                   <td>{p.category}</td>
-//                   <td>{p.ingredients?.slice(0, 50)}...</td>
+//                   <td>{p.packSize}</td>
+//                   <td>{p.composition}</td>
 //                   <td>
-//                     <button className="edit-btn" onClick={() => handleEdit(p)}>
-//                       Edit
-//                     </button>
-//                     <button
-//                       className="delete-btn"
-//                       onClick={() => handleDelete(p._id)}
-//                     >
-//                       Delete
-//                     </button>
+//                     <button className="edit-btn" onClick={() => handleEdit(p)}>Edit</button>
+//                     <button className="delete-btn" onClick={() => handleDelete(p._id)}>Delete</button>
 //                   </td>
 //                 </tr>
 //               ))
 //             ) : (
-//               <tr>
-//                 <td colSpan="5">No products found</td>
-//               </tr>
+//               <tr><td colSpan="5">No products found</td></tr>
 //             )}
 //           </tbody>
 //         </table>
 //       </div>
 
-//       {/* ✍️ Add/Edit Form */}
+//       {/* Add / Edit Form */}
 //       {showForm && (
 //         <form className="add-form" onSubmit={handleSubmit}>
-//           <input
-//             name="name"
-//             value={formData.name}
-//             onChange={handleChange}
-//             placeholder="Product Name"
-//             required
-//           />
-
-         
-//           <select name="category" value={formData.category} onChange={handleChange}>
-//   <option value="">Select Category</option>
-//   {categories.map((cat) => (
-//     <option key={cat._id} value={cat.name}>
-//       {cat.name}
-//     </option>
-//   ))}
-// </select>
-
-
-//           <textarea
-//             name="ingredients"
-//             value={formData.ingredients}
-//             onChange={handleChange}
-//             placeholder="Ingredients"
-//             required
-//           />
-
-//           <textarea
-//             name="description"
-//             value={formData.description}
-//             onChange={handleChange}
-//             placeholder="Description"
-//           />
-
-//           <input
-//             name="indications"
-//             value={formData.indications}
-//             onChange={handleChange}
-//             placeholder="Indications (comma separated)"
-//           />
-
+//           <input name="name" value={formData.name} onChange={handleChange} placeholder="Product Name" required />
+//           <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
+//           <textarea name="composition" value={formData.composition} onChange={handleChange} placeholder="Composition" />
+//           <input name="packSize" value={formData.packSize} onChange={handleChange} placeholder="Pack Size (e.g. 60ml)" />
+//           <input name="keyPoints" value={formData.keyPoints} onChange={handleChange} placeholder="Key Points (comma separated)" />
 //           <label>Upload Images:</label>
-//           <input
-//             type="file"
-//             multiple
-//             accept="image/*"
-//             onChange={handleFileChange}
-//           />
+//           <input type="file" multiple accept="image/*" onChange={handleFileChange} />
 
 //           <div className="image-preview-grid">
 //             {previews.map((src, i) => (
@@ -250,42 +197,41 @@
 //   );
 // };
 
-// export default ProductManager;
+// export default Haircare;
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Product.css";
-import envvar from "../../../index";
+import "./Haircare.css";
+import envvar from "../../../../index";
 
-const ProductManager = () => {
+const Haircare = () => {
   const [showForm, setShowForm] = useState(false);
   const [files, setFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
     ingredients: "",
     description: "",
     indications: "",
-    category: "",
+    category: "Haircare",
   });
 
-  useEffect(() => {
-    axios.get(`${envvar.baseurl}/category`).then((res) => setCategories(res.data));
-    fetchProducts();
-  }, []);
-
+  // 🧩 Fetch Haircare products
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`${envvar.baseurl}/product`);
+      const res = await axios.get(`${envvar.baseurl}/product?category=Haircare`);
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
     }
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -304,13 +250,14 @@ const ProductManager = () => {
       ingredients: "",
       description: "",
       indications: "",
-      category: "",
+      category: "Haircare",
     });
     setFiles([]);
     setPreviews([]);
     setEditingId(null);
   };
 
+  // ➕ Add / ✏️ Update Product
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -330,14 +277,15 @@ const ProductManager = () => {
         alert("✅ New product added!");
       }
 
-      setShowForm(false);
       resetForm();
+      setShowForm(false);
       fetchProducts();
     } catch (err) {
       console.error("Error saving product:", err);
     }
   };
 
+  // 🗑️ Delete Product
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
@@ -349,6 +297,7 @@ const ProductManager = () => {
     }
   };
 
+  // ✏️ Edit Product
   const handleEdit = (product) => {
     setEditingId(product._id);
     setShowForm(true);
@@ -363,17 +312,17 @@ const ProductManager = () => {
   };
 
   return (
-    <div className="product-manager-container">
-      <div className="product-header">
-        <h2>🧴 Product Manager</h2>
+    <div className="haircare-container">
+      <div className="haircare-header">
+        <h2>💇‍♀️ Haircare Products</h2>
         <button
           className="add-btn"
           onClick={() => {
-            setShowForm(true);
+            setShowForm(!showForm);
             resetForm();
           }}
         >
-          + Add Product
+          {showForm ? "Close Form" : "+ Add Product"}
         </button>
       </div>
 
@@ -384,7 +333,6 @@ const ProductManager = () => {
             <tr>
               <th>Image</th>
               <th>Name</th>
-              <th>Category</th>
               <th>Ingredients</th>
               <th>Actions</th>
             </tr>
@@ -403,8 +351,7 @@ const ProductManager = () => {
                     )}
                   </td>
                   <td>{p.name}</td>
-                  <td>{p.category}</td>
-                  <td>{p.ingredients?.slice(0, 50)}...</td>
+                  <td>{p.ingredients?.slice(0, 60)}...</td>
                   <td>
                     <button className="edit-btn" onClick={() => handleEdit(p)}>
                       Edit
@@ -420,98 +367,67 @@ const ProductManager = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="5">No products found</td>
+                <td colSpan="4">No haircare products found</td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
 
-      {/* 🧾 Modal Form */}
+      {/* ✍️ Add / Edit Form */}
       {showForm && (
-        <div className="modal-overlay" onClick={() => setShowForm(false)}>
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3>{editingId ? "Edit Product" : "Add Product"}</h3>
-            <form className="add-form" onSubmit={handleSubmit}>
-              <input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Product Name"
-                required
-              />
+        <form className="add-form" onSubmit={handleSubmit}>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Product Name"
+            required
+          />
 
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Category</option>
-                {categories.map((cat) => (
-                  <option key={cat._id} value={cat.name}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
+          <textarea
+            name="ingredients"
+            value={formData.ingredients}
+            onChange={handleChange}
+            placeholder="Ingredients (comma separated or paragraph)"
+            required
+          />
 
-              <textarea
-                name="ingredients"
-                value={formData.ingredients}
-                onChange={handleChange}
-                placeholder="Ingredients"
-                required
-              />
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="Description"
+          />
 
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                placeholder="Description"
-              />
+          <input
+            name="indications"
+            value={formData.indications}
+            onChange={handleChange}
+            placeholder="Indications (comma separated)"
+          />
 
-              <input
-                name="indications"
-                value={formData.indications}
-                onChange={handleChange}
-                placeholder="Indications (comma separated)"
-              />
+          <label>Upload Images:</label>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={handleFileChange}
+          />
 
-              <label>Upload Images:</label>
-              <input
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleFileChange}
-              />
-
-              <div className="image-preview-grid">
-                {previews.map((src, i) => (
-                  <img key={i} src={src} alt="preview" />
-                ))}
-              </div>
-
-              <div className="modal-buttons">
-                <button type="submit" className="save-btn">
-                  {editingId ? "Update Product" : "Save Product"}
-                </button>
-                <button
-                  type="button"
-                  className="cancel-btn"
-                  onClick={() => setShowForm(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+          <div className="image-preview-grid">
+            {previews.map((src, i) => (
+              <img key={i} src={src} alt="preview" />
+            ))}
           </div>
-        </div>
+
+          <button type="submit" className="save-btn">
+            {editingId ? "Update Product" : "Save Product"}
+          </button>
+        </form>
       )}
     </div>
   );
 };
 
-export default ProductManager;
+export default Haircare;

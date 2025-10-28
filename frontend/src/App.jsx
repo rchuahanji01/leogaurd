@@ -1,15 +1,22 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
+
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 
 import Home from "./pages/home/Home";
+import CompanyIntro from "./components/CompanyIntro/CompanyIntro";
 import Aboutus from "./pages/about/Aboutus";
 import Contact from "./pages/contacts/Contact";
 import Login from "./pages/login/Login";
-
+import ProtectedRoute from "./components/ProtectedRoute";
+import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
+// import Skincare from "./pages/adminPages/adminProduct/skincare/Skincare";
+// import Haircare from "./pages/adminPages/adminProduct/haircare/Haircare";
+import ProductDisplay from './products/ProductDisplay'
 // Admin
 import AdminLayout from "./pages/admin/Admin";
-import { DashboardHome, Users, Products, Settings } from "./pages/admin/AdminRoutes";
+import { DashboardHome, Users, Products, Settings ,Haircare ,Skincare,CategoryManage } from "./pages/admin/AdminRoutes";
 
 function App() {
   return (
@@ -22,7 +29,7 @@ function App() {
 function MainLayout() {
   const location = useLocation();
 
-  // Hide navbar/footer on admin routes
+  // Hide Navbar/Footer on admin routes
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
@@ -30,21 +37,41 @@ function MainLayout() {
       {!isAdminRoute && <Navbar />}
 
       <Routes>
-        {/* Normal Pages */}
+        {/* 🌐 Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Aboutus />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/ProductDisplay" element={<ProductDisplay />} />
 
-        {/* Admin Layout with Nested Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
+        {/* 🔒 Protected Admin Routes */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<DashboardHome />} />
           <Route path="users" element={<Users />} />
           <Route path="products" element={<Products />} />
           <Route path="settings" element={<Settings />} />
-        </Route>
-      </Routes>
+          <Route path="skincare" element={<Skincare />} />
+          <Route path="haircare" element={<Haircare />} />
+          <Route path="category" element={<CategoryManage />} />
 
+
+          
+          {/* <Route path="products/skincare" element={<Skincare />} />
+          <Route path="products/haircare" element={<Haircare />} /> */}
+        </Route>
+
+        {/* Redirect invalid paths */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      {/* {!isAdminRoute && <CompanyIntro />}  */}
+      {!isAdminRoute && <WhatsAppButton />}    
       {!isAdminRoute && <Footer />}
     </>
   );

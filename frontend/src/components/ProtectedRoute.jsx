@@ -2,12 +2,14 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const isAdmin = localStorage.getItem("isAdmin");
-
-  if (!isAdmin) {
-    return <Navigate to="/" replace />; // redirect non-admin users
+  const token = localStorage.getItem("token");
+  console.log('/>.......' , token)
+  // if no token, redirect to login
+  if (!token) {
+    return <Navigate to="/" replace />;
   }
 
+  // else, allow access
   return children;
 };
 

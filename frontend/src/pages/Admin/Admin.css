@@ -1,52 +1,113 @@
+/* ----- Layout container ----- */
 .admin-container {
   display: flex;
-  height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, sans-serif;
 }
 
-/* Sidebar */
+/* ----- Sidebar ----- */
 .sidebar {
   width: 250px;
-  background: #111827; /* Dark navy */
-  color: white;
-  padding: 20px;
+  background-color: #1f2937; /* Dark gray/navy */
+  color: #e5e7eb;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
 }
 
-.sidebar .logo {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #60a5fa;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
+/* ----- Navigation ----- */
 .sidebar nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar nav ul li {
-  margin: 15px 0;
+  margin-bottom: 18px;
+  position: relative;
 }
 
-.sidebar nav ul li a {
+.sidebar nav ul li a,
+.submenu-trigger {
+  display: block;
   color: #d1d5db;
   text-decoration: none;
   font-size: 1rem;
-  padding: 10px;
-  display: block;
+  padding: 10px 14px;
   border-radius: 6px;
   transition: 0.3s;
 }
 
-.sidebar nav ul li a:hover {
-  background: #2563eb;
+.sidebar nav ul li a:hover,
+.submenu-trigger:hover {
+  background-color: #2563eb;
   color: #fff;
 }
 
-/* Content */
+/* ----- Submenu ----- */
+.has-submenu {
+  cursor: pointer;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #374151;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  list-style: none;
+  padding: 6px 0;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.submenu li a {
+  color: #f3f4f6;
+  padding: 8px 14px;
+  display: block;
+  font-size: 0.95rem;
+  transition: 0.25s;
+}
+
+.submenu li a:hover {
+  background-color: #2563eb;
+}
+
+/* ----- Logout Button ----- */
+.logout-btn {
+  background-color: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* ----- Main Content ----- */
 .content {
   flex: 1;
-  background: #f9fafb;
-  padding: 30px;
+  margin-left: 250px; /* same as sidebar width */
+  padding: 40px;
+  background-color: #f9fafb;
   overflow-y: auto;
 }
