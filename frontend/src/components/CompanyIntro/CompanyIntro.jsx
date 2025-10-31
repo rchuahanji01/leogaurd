@@ -7,18 +7,19 @@ const CompanyIntro = () => {
   return (
     <section className="company-intro">
       <div className="intro-header">
-        <h4>Company Introduction</h4>
-        <p className="subtext">Leogard Pharmaceuticals Corporate Vision</p>
+        {/* <h4>Company Introduction</h4>
+        <p className="subtext">Leogard Pharmaceuticals Corporate Vision</p> */}
       </div>
 
       <div className="intro-quote">
-        <h2>
-          “Providing the freshest <span>today’s skin</span>”
-        </h2>
-        <p>
+        
+         <h2>
+           “Providing the freshest <span>today’s skin</span>”
+         </h2>
+        {/* <p>
           Leogard promotes and provides you with the most effective experience
           of dermatological and cosmeceutical care.
-        </p>
+        </p>  */}
       </div>
 
       <div className="intro-grid">

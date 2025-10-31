@@ -117,7 +117,7 @@ const ProductManager = () => {
       indications: product.indications.join(", "),
       category: product.category,
     });
-    setPreviews(product.images.map((img) => `http://localhost:4001${img}`));
+    setPreviews(product.images.map((img) => `${envvar.url}${img}`));
   };
 
   return (
@@ -154,7 +154,7 @@ const ProductManager = () => {
                   <td>
                     {p.images?.[0] && (
                       <img
-                        src={`http://localhost:4001${p.images[0]}`}
+                        src={`${envvar.url}${p.images[0]}`}
                         alt={p.name}
                         className="thumb"
                       />
