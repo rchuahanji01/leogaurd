@@ -15,8 +15,8 @@ import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
 // import Haircare from "./pages/adminPages/adminProduct/haircare/Haircare";
 import ProductDisplay from './products/ProductDisplay'
 // Admin
-import AdminLayout from "./pages/admin/Admin";
-import { DashboardHome, Users, Products, Settings ,Haircare ,Skincare,CategoryManage } from "./pages/admin/AdminRoutes";
+import AdminLayout from "./pages/Admin/Admin";
+import { DashboardHome, Users, Products, Settings ,Haircare ,Skincare,CategoryManage } from "./pages/Admin/AdminRoutes";
 
 function App() {
   return (
