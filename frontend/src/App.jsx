@@ -16,7 +16,7 @@ import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
 import ProductDisplay from './products/ProductDisplay'
 // Admin
 import AdminLayout from "./pages/Admin/Admin";
-import { DashboardHome, Users, Products, Settings ,Haircare ,Skincare,CategoryManage } from "./pages/Admin/AdminRoutes";
+import { DashboardHome, Products,CategoryManage } from "./pages/Admin/AdminRoutes";
 
 function App() {
   return (
@@ -54,11 +54,11 @@ function MainLayout() {
           }
         >
           <Route index element={<DashboardHome />} />
-          <Route path="users" element={<Users />} />
+          {/* <Route path="users" element={<Users />} /> */}
           <Route path="products" element={<Products />} />
-          <Route path="settings" element={<Settings />} />
+          {/* <Route path="settings" element={<Settings />} />
           <Route path="skincare" element={<Skincare />} />
-          <Route path="haircare" element={<Haircare />} />
+          <Route path="haircare" element={<Haircare />} /> */}
           <Route path="category" element={<CategoryManage />} />
 
 
