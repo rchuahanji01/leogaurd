@@ -1,4 +1,4 @@
-.skincare-container {
+/* .skincare-container {
   background: #fff;
   border-radius: 12px;
   padding: 30px;
@@ -32,7 +32,7 @@
   background-color: #1e40af;
 }
 
-/* Form */
+
 .add-form {
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
   background-color: #059669;
 }
 
-/* Product Grid */
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -126,7 +126,7 @@
 }
 
 .skincare-header h2 {
-  color: #ec4899; /* soft pink */
+  color: #ec4899; 
 }
 
 .add-btn {
@@ -135,4 +135,4 @@
 
 .save-btn {
   background-color: #f472b6;
-}
+} */
