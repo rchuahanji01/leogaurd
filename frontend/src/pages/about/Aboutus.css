@@ -1,11 +1,12 @@
 .aboutus {
   font-family: "Poppins", sans-serif;
   color: #333;
+  overflow-x: hidden;
 }
 
-
+/* 🌄 Hero Section */
 .aboutus-hero {
-  background: url("https://via.placeholder.com/1600x600") center/cover no-repeat;
+  /* background: url("../../assets/aboutus.png") center/cover no-repeat; */
   height: 70vh;
   position: relative;
   display: flex;
@@ -14,11 +15,13 @@
 }
 
 .hero-overlay {
-  background: rgba(0,0,0,0.5);
+  /* background: rgba(0, 0, 0, 0.55); */
   padding: 40px;
   text-align: center;
   color: #fff;
   border-radius: 10px;
+  max-width: 900px;
+  width: 90%;
 }
 
 .hero-overlay h1 {
@@ -30,10 +33,12 @@
   font-size: 1.2rem;
 }
 
+/* 🧩 Split Layout (Desktop Default) */
 .aboutus-split {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 60px;
   padding: 80px 10%;
 }
 
@@ -41,10 +46,16 @@
   flex-direction: row-reverse;
 }
 
+.split-image {
+  flex: 1;
+}
+
 .split-image img {
-    height: 400px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .split-text {
@@ -52,16 +63,18 @@
 }
 
 .split-text h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  color: #00a651;
   margin-bottom: 20px;
 }
 
 .split-text p {
-  margin-bottom: 15px;
+  font-size: 1.05rem;
   line-height: 1.7;
+  margin-bottom: 15px;
 }
 
-
+/* 💎 Core Values */
 .aboutus-values {
   background: #f8f8f8;
   text-align: center;
@@ -71,15 +84,15 @@
 .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 25px;
   margin-top: 40px;
 }
 
 .value-card {
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
 }
 
@@ -88,10 +101,11 @@
 }
 
 .value-card h3 {
+  color: #00a651;
   margin-bottom: 10px;
-  color: #1bfe4d;
 }
 
+/* 🤝 Commitment */
 .aboutus-commitment {
   padding: 80px 10%;
   text-align: center;
@@ -100,41 +114,10 @@
 .commitment-text h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: #00a651;
 }
 
-
-.aboutus-cta {
-  background: #1bfe4d;
-  color: #fff;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.aboutus-btn {
-  margin-top: 20px;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  background: #fff;
-  color: #1bfe4d;
-  transition: 0.3s;
-}
-
-.aboutus-btn:hover {
-  background: #f0f0f0;
-}
-
-
-@media (max-width: 992px) {
-  .aboutus-split {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* Presence Section */
+/* 🌍 Presence */
 .aboutus-presence {
   background: #fff;
   padding: 80px 10%;
@@ -144,7 +127,7 @@
 .aboutus-presence h2 {
   font-size: 2.2rem;
   margin-bottom: 40px;
-  color: #1bfe4d;
+  color: #00a651;
 }
 
 .presence-cards {
@@ -167,12 +150,91 @@
 }
 
 .presence-card h3 {
+  color: #00a651;
   font-size: 1.3rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-.presence-card p {
+/* CTA */
+.aboutus-cta {
+  background: #00a651;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.aboutus-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
   font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
+  cursor: pointer;
+  background: #fff;
+  color: #00a651;
+  transition: 0.3s;
+}
+
+.aboutus-btn:hover {
+  background: #f0f0f0;
+}
+
+/* 📱 Responsive Fixes — Only Small Screens */
+@media (max-width: 992px) {
+  .aboutus-split {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 6%;
+  }
+
+  .aboutus-split.reverse {
+    flex-direction: column;
+  }
+
+  .split-image img {
+    max-width: 400px;
+    margin: 0 auto 30px;
+  }
+
+  .split-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .split-text p {
+    font-size: 1rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutus-split {
+    padding: 40px 5%;
+  }
+
+  .split-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .split-text p {
+    font-size: 0.95rem;
+  }
+
+  .hero-overlay {
+    padding: 25px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.9rem;
+  }
 }

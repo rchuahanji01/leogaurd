@@ -5,7 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 
 import Home from "./pages/home/Home";
-import CompanyIntro from "./components/CompanyIntro/CompanyIntro";
+// import CompanyIntro from "./components/CompanyIntro/CompanyIntro";
 import Aboutus from "./pages/about/Aboutus";
 import Contact from "./pages/contacts/Contact";
 import Login from "./pages/login/Login";
