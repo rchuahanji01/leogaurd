@@ -6,7 +6,7 @@
 // }
 const envvar = {
      baseurl :'https://leogardbacken.onrender.com/api/leogaurd',
-     url:'https://leogardbacken.onrender.com/'
+     url:'https://leogardbacken.onrender.com'
 }
 
 
