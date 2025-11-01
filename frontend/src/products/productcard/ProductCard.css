@@ -1,83 +1,102 @@
-/* Container padding */
-.swiper-container {
-  padding: 20px 0;
+/* 🌐 Base container */
+.product-carousel {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Card styling */
-.swiper-slide div {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+/* 🏷️ Header */
+.header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #00a651;
+}
+
+/* 🧴 Product Card */
+.product-card {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-/* Card hover effect */
-.swiper-slide div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* Product image */
-.swiper-slide img {
+/* 🖼️ Product Image */
+.product-card img {
   height: 230px;
   width: auto;
   object-fit: contain;
   margin-bottom: 12px;
 }
 
-/* Product label */
-.swiper-slide h3 {
+/* 🏷️ Product Name */
+.product-card h3 {
   font-size: 1rem;
   font-weight: 500;
-  color: #333333;
-  text-align: center;
-  line-height: 1.2;
+  color: #333;
 }
 
-/* Navigation arrows color */
+/* 🎯 Swiper custom styles */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #1bfe4d; /* Primary green */
+  color: #00a651;
+  top: 40%;
 }
 
-/* Pagination dots color */
 .swiper-pagination-bullet {
-  background: #cccccc;
+  background: #ccc;
   opacity: 1;
 }
-
 .swiper-pagination-bullet-active {
-  background: #1bfe4d;
+  background: #00a651;
 }
 
-/* Responsive adjustments */
+/* 📱 Responsive adjustments */
+@media (max-width: 1280px) {
+  .product-card img {
+    height: 200px;
+  }
+}
+
 @media (max-width: 1024px) {
-  .swiper-slide img {
-    height: 110px;
+  .product-card img {
+    height: 180px;
   }
 }
 
 @media (max-width: 768px) {
-  .swiper-slide img {
-    height: 100px;
+  .product-card img {
+    height: 160px;
   }
-  .swiper-slide h3 {
+  .product-card h3 {
     font-size: 0.95rem;
   }
 }
 
-.header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 50px;
+@media (max-width: 600px) {
+  .product-card img {
+    height: 140px;
+  }
 }
 
-.main{
-    background-color:rgb(243, 239, 239);
-    padding: 40px;
+@media (max-width: 480px) {
+  .product-card img {
+    height: 160px;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none; /* hide arrows on mobile */
+  }
 }

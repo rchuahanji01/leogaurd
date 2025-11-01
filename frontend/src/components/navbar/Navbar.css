@@ -9,6 +9,21 @@
   transition: all 0.4s ease;
   padding: 6px 0;
 }
+/* 🧩 Disable fixed navbar on tablets & mobile */
+@media (max-width: 992px) {
+  .navbar {
+    position: static !important;
+    z-index: auto !important;
+    background-color: #ffffff !important; /* looks natural when scrolled */
+    box-shadow: none !important;
+  }
+
+  /* since navbar is no longer fixed, we don’t need extra top offset */
+  body {
+    padding-top: 0 !important;
+  }
+}
+
 
 /* 🌫️ When Scrolled */
 .navbar-scrolled {
@@ -52,6 +67,10 @@
   cursor: pointer;
   display: none;
   transition: color 0.3s ease;
+}
+.menu-toggle {
+  z-index: 4000 !important; /* higher than .nav-links.open */
+  position: relative;
 }
 
 /* 🧭 Navigation Links */
@@ -188,6 +207,10 @@
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
   }
+  .nav-links.open {
+  right: 0;
+  z-index: 3000; /* ✅ ensure sidebar is above carousel or hero */
+}
 
   .nav-links.open {
     right: 0;
@@ -230,6 +253,9 @@
 
 /* Small screens (phones <600px) */
 @media (max-width: 600px) {
+  /* .navbar{
+    z-index: none;
+  } */
   .menu-toggle {
     font-size: 1.8rem;
     top: 25px;

@@ -3,7 +3,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-
+import './App.css'
 import Home from "./pages/home/Home";
 // import CompanyIntro from "./components/CompanyIntro/CompanyIntro";
 import Aboutus from "./pages/about/Aboutus";
@@ -19,6 +19,7 @@ import AdminLayout from "./pages/Admin/Admin";
 import { DashboardHome, Products,CategoryManage } from "./pages/Admin/AdminRoutes";
 
 function App() {
+
   return (
     <Router>
       <MainLayout />
