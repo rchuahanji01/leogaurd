@@ -9,6 +9,7 @@ const ProductManager = () => {
   const [previews, setPreviews] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [products, setProducts] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
 
   // available categories
   const categories = [

@@ -7,6 +7,7 @@ import Testimonial from '../testimonials/Testimonial'
 import CompanyIntro from '../../components/CompanyIntro/CompanyIntro'
 import BrandStory from '../BrandStory/BrandStory'
 import BrandClosing from '../BrandClosing/BrandClosing'
+import WelcomeSection from '../WelcomeSection/WelcomeSection'
 // import { ParallaxProvider } from 'react-scroll-parallax';
 import { ParallaxProvider } from "react-scroll-parallax";
 
@@ -18,6 +19,7 @@ const Home = () => {
     {/* <BrandClosing/>
     <CompanyIntro/>
     <BrandStory/> */}
+    <WelcomeSection/>
     <ParallaxProvider>
       <CompanyIntro />
       <BrandStory />

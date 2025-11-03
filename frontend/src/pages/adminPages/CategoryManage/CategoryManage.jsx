@@ -56,11 +56,20 @@ const CategoryManage = () => {
           onChange={(e) => setName(e.target.value)}
           required
         />
-        <textarea
+        {/* <textarea
           placeholder="Description (optional)"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-        />
+        /> */}
+        <select
+  value={description}
+  onChange={(e) => setDescription(e.target.value)}
+  required
+>
+  <option value="">-- Select Type --</option>
+  <option value="Section Based">Section Based</option>
+  <option value="Indication Based">Indication Based</option>
+</select>
         <button type="submit">Add Category</button>
       </form>
 

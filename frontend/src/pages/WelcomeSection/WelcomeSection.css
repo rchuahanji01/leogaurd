@@ -1,0 +1,79 @@
+.welcome-section {
+  text-align: center;
+  padding: 40px 20px; /* 🔹 reduced top padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: #fff;
+  margin-top: 0; /* 🔹 ensure no gap from carousel */
+}
+
+.welcome-section .content {
+  max-width: 900px;
+  margin: 0 auto 40px auto; /* 🔹 nicely balanced spacing */
+}
+
+.welcome-section h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.underline {
+  width: 60px;
+  height: 3px;
+  background-color: #00a651;
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}
+
+.welcome-section p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.product-lineup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.product-lineup img {
+  max-width: 95%;
+  height: 70vh;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-lineup img:hover {
+  transform: scale(1.02);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .welcome-section {
+    padding: 40px 15px;
+  }
+
+  .welcome-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-section p {
+    font-size: 0.95rem;
+  }
+
+  .product-lineup img {
+    max-width: 100%;
+    height: auto;
+  }
+}

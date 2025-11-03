@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 
-import Img1 from "../../assets/home/image1.png";
-import Img2 from "../../assets/home/image2.png";
-import Img3 from "../../assets/home/image3.png";
-import Img4 from "../../assets/home/image4.png";
-import Img5 from "../../assets/home/image5.png";
-import Img6 from "../../assets/home/image6.png";
+import Img1 from "../../assets/home/kerelioMax2.png";
+import Img2 from "../../assets/home/sunscream2.png";
+import Img3 from "../../assets/home/homeimg2.png";
+import Img4 from "../../assets/home/qutifil2.png";
+import Img5 from "../../assets/home/ideglow1.png";
+import Img6 from "../../assets/home/pellegard.png";
+// import Img7 from "../../assets/home/image.png";
 
 const images = [Img1, Img2, Img3, Img4, Img5, Img6];
 
