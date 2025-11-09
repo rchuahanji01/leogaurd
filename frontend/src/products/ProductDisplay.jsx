@@ -1,58 +1,57 @@
 
-
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
-import envvar from "../index";
+import { products } from "../assets/productsimg/products"; 
 import "./ProductDisplay.css";
 
 const ProductDisplay = () => {
-  const [products, setProducts] = useState([]);
   const [category, setCategory] = useState(
     localStorage.getItem("selectedCategory") || "All"
   );
 
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  // 🔁 Watch for category change (from Navbar)
   useEffect(() => {
     const handleCategoryChange = (e) => setCategory(e.detail);
     window.addEventListener("categoryChange", handleCategoryChange);
-    return () => window.removeEventListener("categoryChange", handleCategoryChange);
+    return () =>
+      window.removeEventListener("categoryChange", handleCategoryChange);
   }, []);
 
+  // 🔍 Filter products locally instead of API call
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const url =
-          category && category !== "All"
-            ? `${envvar.baseurl}/product?category=${category}`
-            : `${envvar.baseurl}/product`;
-        const res = await axios.get(url);
-        setProducts(res.data);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-      }
-    };
-    fetchProducts();
+    if (category === "All") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (p) =>
+          p.category.toLowerCase().trim() === category.toLowerCase().trim()
+      );
+      setFilteredProducts(filtered);
+    }
   }, [category]);
 
   return (
     <div className="product-display">
       {/* 🟢 Hero Section */}
       <div className="hero-banner">
-        <h1>{category === "All" ? "All Products" : `${category} Products`}</h1>
+        <h1>
+          {category === "All" ? "All Products" : `${category} Products`}
+        </h1>
       </div>
 
       {/* 🧴 Product Section */}
       <div className="product-container">
-        {products.length === 0 ? (
+        {filteredProducts.length === 0 ? (
           <p className="no-products">No products found.</p>
         ) : (
-          products.map((p, index) => {
+          filteredProducts.map((p, index) => {
             const isEven = index % 2 === 0;
-
             return (
               <div
                 className={`product-layout ${isEven ? "" : "reverse"}`}
-                key={p._id}
+                key={p.id}
               >
                 {/* Image Animation */}
                 <motion.div
@@ -63,10 +62,7 @@ const ProductDisplay = () => {
                   viewport={{ once: true, amount: 0.4 }}
                 >
                   {p.images?.[0] && (
-                    <img
-                      src={`${envvar.url}${p.images[0]}`}
-                      alt={p.name}
-                    />
+                    <img src={p.images[0]} alt={p.name} />
                   )}
                 </motion.div>
 
@@ -115,3 +111,4 @@ const ProductDisplay = () => {
 };
 
 export default ProductDisplay;
+

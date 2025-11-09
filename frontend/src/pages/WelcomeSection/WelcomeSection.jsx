@@ -1,6 +1,6 @@
 import React from "react";
 import "./WelcomeSection.css";
-import productsBanner from "../../assets/home/image.png"; // <-- use your product lineup image
+import productsBanner from "../../assets/home/image-CDG1AP31.webp"; // <-- use your product lineup image
 
 const WelcomeSection = () => {
   return (
