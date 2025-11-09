@@ -11,13 +11,13 @@
 //     <section className="about-section">
 //       <div className="about-container">
 //         <div className="about-image">
-//           <img src={AboutImg} alt="LeoGuard Skincare" />
+//           <img src={AboutImg} alt="LeoGard Skincare" />
 //         </div>
 
 //         <div className="about-text">
-//           <h2>Welcome to LeoGuard Pharmaceuticals</h2>
+//           <h2>Welcome to LeoGard Pharmaceuticals</h2>
 //           <p>
-//             Discover the future of advanced skincare and haircare with LeoGuard.
+//             Discover the future of advanced skincare and haircare with LeoGard.
 //             Backed by a team of dermatologists, scientists, and skincare
 //             specialists, we deliver clinically effective solutions designed to
 //             meet your unique needs.
@@ -28,7 +28,7 @@
 //             much more—crafted with a focus on quality and results.
 //           </p>
 //           <p>
-//             At LeoGuard Pharmaceuticals, your skin and hair health are our top
+//             At LeoGard Pharmaceuticals, your skin and hair health are our top
 //             priority. With a perfect blend of science, innovation, and care, we
 //             bring you personalized solutions you can trust.
 //           </p>
@@ -82,13 +82,13 @@ const AboutSection = () => {
     <section className="about-section">
       <div className="about-container">
         <div className="about-image slide-left" ref={imageRef}>
-          <img src={AboutImg} alt="LeoGuard Skincare" />
+          <img src={AboutImg} alt="LeoGard Skincare" />
         </div>
 
         <div className="about-text slide-right" ref={textRef}>
-          <h2>Welcome to LeoGuard Pharmaceuticals</h2>
+          <h2>Welcome to LeoGard Pharmaceuticals</h2>
           <p>
-            Discover the future of advanced skincare and haircare with LeoGuard.
+            Discover the future of advanced skincare and haircare with LeoGard.
             Backed by a team of dermatologists, scientists, and skincare
             specialists, we deliver clinically effective solutions designed to
             meet your unique needs.
@@ -99,7 +99,7 @@ const AboutSection = () => {
             much more—crafted with a focus on quality and results.
           </p>
           <p>
-            At LeoGuard Pharmaceuticals, your skin and hair health are our top
+            At LeoGard Pharmaceuticals, your skin and hair health are our top
             priority. With a perfect blend of science, innovation, and care, we
             bring you personalized solutions you can trust.
           </p>

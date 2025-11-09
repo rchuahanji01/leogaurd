@@ -1,4 +1,7 @@
+
 // import React, { useState } from "react";
+// import axios from "axios";
+// import envvar from "../../index"; // make sure this exports baseurl
 // import "./Contact.css";
 
 // const Contact = () => {
@@ -9,15 +12,34 @@
 //     subject: "",
 //     message: "",
 //   });
+//   const [loading, setLoading] = useState(false);
 
 //   const handleChange = (e) => {
 //     setForm({ ...form, [e.target.name]: e.target.value });
 //   };
 
-//   const handleSubmit = (e) => {
+//   const handleSubmit = async (e) => {
 //     e.preventDefault();
-//     console.log("Form submitted:", form);
-//     alert("Thank you for contacting us!");
+
+//     if (!form.name || !form.email || !form.message) {
+//       return alert("Please fill Name, Email and Message.");
+//     }
+
+//     try {
+//       setLoading(true);
+//       const res = await axios.post(`${envvar.baseurl}/sendemail`, form);
+//       if (res.data && res.data.success) {
+//         alert("Thank you — your message has been sent!");
+//         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+//       } else {
+//         alert(res.data.message || "Failed to send message");
+//       }
+//     } catch (err) {
+//       console.error("Contact submit error:", err);
+//       alert("Sorry, something went wrong. Please try again later.");
+//     } finally {
+//       setLoading(false);
+//     }
 //   };
 
 //   return (
@@ -25,10 +47,7 @@
 //       {/* Hero */}
 //       <section className="contact-hero">
 //         <h1>Contact Us</h1>
-//         <p>
-//           Have questions about our products or partnership opportunities?
-//           We’d love to hear from you.
-//         </p>
+//         <p>Have questions about our products or partnership opportunities? We’d love to hear from you.</p>
 //       </section>
 
 //       {/* Contact Info + Form */}
@@ -36,18 +55,15 @@
 //         {/* Info block */}
 //         <div className="contact-info">
 //           <h2>Get in Touch</h2>
-//           <p>
-//             Reach out to us via the form or through the details below.
-//             Our team will respond as quickly as possible.
-//           </p>
+//           <p>Reach out to us via the form or through the details below. Our team will respond as quickly as possible.</p>
 
 //           <div className="info-card">
 //             <h3>Head Office</h3>
-//             <p>LeoGuard Pharmaceuticals, Mumbai, India</p>
+//             <p>LeoGard Pharmaceuticals, Mumbai, India</p>
 //           </div>
 //           <div className="info-card">
 //             <h3>Email</h3>
-//             <p>info@leoguardpharma.com</p>
+//             <p>info@LeoGardpharma.com</p>
 //           </div>
 //           <div className="info-card">
 //             <h3>Phone</h3>
@@ -64,54 +80,26 @@
 //           <h2>Send us a message</h2>
 //           <label>
 //             Full Name *
-//             <input
-//               type="text"
-//               name="name"
-//               value={form.name}
-//               onChange={handleChange}
-//               required
-//             />
+//             <input type="text" name="name" value={form.name} onChange={handleChange} required />
 //           </label>
 //           <label>
 //             Email *
-//             <input
-//               type="email"
-//               name="email"
-//               value={form.email}
-//               onChange={handleChange}
-//               required
-//             />
+//             <input type="email" name="email" value={form.email} onChange={handleChange} required />
 //           </label>
 //           <label>
 //             Phone
-//             <input
-//               type="tel"
-//               name="phone"
-//               value={form.phone}
-//               onChange={handleChange}
-//             />
+//             <input type="tel" name="phone" value={form.phone} onChange={handleChange} />
 //           </label>
 //           <label>
 //             Subject
-//             <input
-//               type="text"
-//               name="subject"
-//               value={form.subject}
-//               onChange={handleChange}
-//             />
+//             <input type="text" name="subject" value={form.subject} onChange={handleChange} />
 //           </label>
 //           <label>
 //             Message *
-//             <textarea
-//               name="message"
-//               rows="5"
-//               value={form.message}
-//               onChange={handleChange}
-//               required
-//             />
+//             <textarea name="message" rows="5" value={form.message} onChange={handleChange} required />
 //           </label>
-//           <button type="submit" className="btn-primary">
-//             Send Message
+//           <button type="submit" className="btn-primary" disabled={loading}>
+//             {loading ? "Sending..." : "Send Message"}
 //           </button>
 //         </form>
 //       </section>
@@ -119,7 +107,7 @@
 //       {/* Map */}
 //       <section className="contact-map">
 //         <iframe
-//           title="LeoGuard Pharma Location"
+//           title="LeoGard Pharma Location"
 //           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.836994!2d72.877655!3d19.076090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630b!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000"
 //           width="100%"
 //           height="400"
@@ -133,9 +121,8 @@
 // };
 
 // export default Contact;
+
 import React, { useState } from "react";
-import axios from "axios";
-import envvar from "../../index"; // make sure this exports baseurl
 import "./Contact.css";
 
 const Contact = () => {
@@ -146,62 +133,62 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.message) {
-      return alert("Please fill Name, Email and Message.");
+    if (!form.name || !form.message) {
+      alert("Please fill in Name and Message fields.");
+      return;
     }
 
-    try {
-      setLoading(true);
-      const res = await axios.post(`${envvar.baseurl}/sendemail`, form);
-      if (res.data && res.data.success) {
-        alert("Thank you — your message has been sent!");
-        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-      } else {
-        alert(res.data.message || "Failed to send message");
-      }
-    } catch (err) {
-      console.error("Contact submit error:", err);
-      alert("Sorry, something went wrong. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
+    const phoneNumber = "918369262375"; // ✅ WhatsApp number (India code included)
+    const text = `📩 *New Message from LeoGard Website*%0A
+👤 *Name:* ${form.name}%0A
+📧 *Email:* ${form.email || "N/A"}%0A
+📞 *Phone:* ${form.phone || "N/A"}%0A
+🧾 *Subject:* ${form.subject || "N/A"}%0A
+💬 *Message:* ${form.message}`;
+
+    // Open WhatsApp chat
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
     <div className="contact-page">
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="contact-hero">
         <h1>Contact Us</h1>
-        <p>Have questions about our products or partnership opportunities? We’d love to hear from you.</p>
+        <p>Have questions about our products or partnerships? We’d love to hear from you on WhatsApp!</p>
       </section>
 
-      {/* Contact Info + Form */}
+      {/* Info + Form */}
       <section className="contact-grid">
-        {/* Info block */}
         <div className="contact-info">
           <h2>Get in Touch</h2>
-          <p>Reach out to us via the form or through the details below. Our team will respond as quickly as possible.</p>
+          <p>Reach out to us via WhatsApp or use the form below to message us directly.</p>
 
           <div className="info-card">
             <h3>Head Office</h3>
-            <p>LeoGuard Pharmaceuticals, Mumbai, India</p>
+            <p>LeoGard Pharmaceuticals, Mumbai, India</p>
           </div>
           <div className="info-card">
-            <h3>Email</h3>
-            <p>info@leoguardpharma.com</p>
-          </div>
-          <div className="info-card">
-            <h3>Phone</h3>
-            <p>+91 98765 43210</p>
+            <h3>WhatsApp</h3>
+            <p>
+              <a
+                href="https://wa.me/918369262375"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-link"
+              >
+                +91 83692 62375
+              </a>
+            </p>
           </div>
           <div className="info-card">
             <h3>Working Hours</h3>
@@ -209,7 +196,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Contact form */}
+        {/* Form */}
         <form className="contact-form" onSubmit={handleSubmit}>
           <h2>Send us a message</h2>
           <label>
@@ -217,8 +204,8 @@ const Contact = () => {
             <input type="text" name="name" value={form.name} onChange={handleChange} required />
           </label>
           <label>
-            Email *
-            <input type="email" name="email" value={form.email} onChange={handleChange} required />
+            Email
+            <input type="email" name="email" value={form.email} onChange={handleChange} />
           </label>
           <label>
             Phone
@@ -232,16 +219,14 @@ const Contact = () => {
             Message *
             <textarea name="message" rows="5" value={form.message} onChange={handleChange} required />
           </label>
-          <button type="submit" className="btn-primary" disabled={loading}>
-            {loading ? "Sending..." : "Send Message"}
-          </button>
+          <button type="submit" className="btn-primary">Send via WhatsApp</button>
         </form>
       </section>
 
-      {/* Map */}
+      {/* Map Section */}
       <section className="contact-map">
         <iframe
-          title="LeoGuard Pharma Location"
+          title="LeoGard Pharma Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.836994!2d72.877655!3d19.076090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630b!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000"
           width="100%"
           height="400"

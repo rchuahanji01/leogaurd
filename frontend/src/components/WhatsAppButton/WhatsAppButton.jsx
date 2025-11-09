@@ -3,7 +3,7 @@
 
 // const WhatsAppButton = () => {
 //   const phoneNumber = "918369262375"; // your number without +
-//   const message = "Hello LeoGuard Pharma! I’d like to know more about your products.";
+//   const message = "Hello LeoGard Pharma! I’d like to know more about your products.";
 //   const link = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
 //   return (
@@ -25,8 +25,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import "./WhatsAppButton.css";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "918369262375"; // your number
-  const message = "Hello LeoGuard Pharma! I’d like to know more about your products.";
+  const phoneNumber = "919223803963"; // your number
+  const message = "Hello LeoGard Pharma! I’d like to know more about your products.";
   const link = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

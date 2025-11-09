@@ -6,19 +6,19 @@ const testimonials = [
     name: "Dr. Ananya Mehta",
     role: "Dermatologist",
     feedback:
-      "LeoGuard products have set a new benchmark in skincare and haircare. Their scientific approach and quality standards are truly commendable.",
+      "LeoGard products have set a new benchmark in skincare and haircare. Their scientific approach and quality standards are truly commendable.",
   },
   {
     name: "Rahul Sharma",
     role: "Customer",
     feedback:
-      "I have been using LeoGuard’s face serum and sunscreen, and the results are amazing! Finally, a brand I can trust for my skin health.",
+      "I have been using LeoGard’s face serum and sunscreen, and the results are amazing! Finally, a brand I can trust for my skin health.",
   },
   {
     name: "Priya Singh",
     role: "Nutritionist",
     feedback:
-      "The nutraceutical range is top-notch. I confidently recommend LeoGuard supplements to my clients for safe and effective results.",
+      "The nutraceutical range is top-notch. I confidently recommend LeoGard supplements to my clients for safe and effective results.",
   },
 ];
 

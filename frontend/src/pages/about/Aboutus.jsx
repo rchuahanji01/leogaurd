@@ -9,7 +9,7 @@ const Aboutus = () => {
       {/* 🟢 Hero Section */}
       {/* <section className="aboutus-hero">
         <div className="hero-overlay">
-          <h1>About LeoGuard Pharmaceuticals</h1>
+          <h1>About LeoGard Pharmaceuticals</h1>
           <p>Redefining Beauty & Wellness Through Science and Care</p>
         </div>
       </section> */}
@@ -22,7 +22,7 @@ const Aboutus = () => {
         <div className="split-text">
           <h2>Our Story</h2>
           <p>
-            LeoGuard Pharmaceuticals was founded with a vision to provide
+            LeoGard Pharmaceuticals was founded with a vision to provide
             advanced, science-backed solutions in cosmeceuticals, trichology,
             and nutraceuticals. Our team brings together decades of experience
             in research, marketing, and manufacturing, blending innovation with
@@ -82,7 +82,7 @@ const Aboutus = () => {
         <div className="commitment-text">
           <h2>Our Commitment</h2>
           <p>
-            At LeoGuard Pharmaceuticals, your health and wellness are our
+            At LeoGard Pharmaceuticals, your health and wellness are our
             priority. We deliver products that are safe, dermatologically tested,
             and clinically proven — blending innovation with trust.
           </p>
@@ -116,7 +116,7 @@ const Aboutus = () => {
           <div className="presence-card">
             <h3>Customer Satisfaction</h3>
             <p>
-              50,000+ happy customers have experienced the LeoGuard difference in
+              50,000+ happy customers have experienced the LeoGard difference in
               skincare and haircare.
             </p>
           </div>
@@ -127,7 +127,7 @@ const Aboutus = () => {
       <section className="aboutus-cta">
         <h2>Let’s Build a Healthier Future Together</h2>
         <p>
-          Partner with LeoGuard Pharmaceuticals and experience the perfect blend
+          Partner with LeoGard Pharmaceuticals and experience the perfect blend
           of science, innovation, and care.
         </p>
         <button className="aboutus-btn">Contact Us</button>

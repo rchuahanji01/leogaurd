@@ -366,3 +366,96 @@
   background-color: #e8f5e9;
   color: #00a651;
 }
+
+/* 🔍 Search Bar Styling */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 220px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #00a651;
+  box-shadow: 0 0 5px rgba(0, 166, 81, 0.4);
+}
+
+.search-bar button {
+  background-color: #00a651;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #008743;
+}
+
+/* 🧠 Suggestions dropdown */
+.suggestions {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+/* 💻 Desktop Search Only */
+.desktop-search {
+  display: flex;
+}
+.mobile-search {
+  display: none;
+}
+
+/* 📱 Mobile Search (below logo) */
+@media (max-width: 992px) {
+  .desktop-search {
+    display: none;
+  }
+  .mobile-search {
+    display: block;
+    width: 100%;
+  }
+
+  .mobile-search form {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+  }
+
+  .mobile-search input {
+    width: 100%;
+  }
+}

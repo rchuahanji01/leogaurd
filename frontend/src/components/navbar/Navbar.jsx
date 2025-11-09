@@ -3,30 +3,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo1.png";
+import { products } from "../../assets/productsimg/products";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [subDropdown, setSubDropdown] = useState(null); // which submenu is open
+  const [searchTerm, setSearchTerm] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
-  // ✅ Static category data (no API calls)
-  const sectionCategories = [
-    { id: 1, name: "Hair Care" },
-    { id: 2, name: "Skin Care" },
-     { id: 3, name: "Shampoo" },
-    { id: 4, name: "Soap" },
-  ];
-
-  const indicationCategories = [
-    { id: 5, name: "Sunscreen" },
-    { id: 6, name: "Face Wash" },
-    { id: 7, name: "Moisturizer" },
-    { id: 8, name: "Antioxidant" },
-    { id: 9,name: "Melasma" },
+  // ✅ Static category data
+  const allCategories = [
+    "Hair Care",
+    "Skin Care",
+    "Shampoo",
+    "Soap",
+    "Sunscreen",
+    "Face Wash",
+    "Moisturizer",
+    "Antioxidant",
+    "Melasma",
   ];
 
   // 🌫️ Scroll effect
@@ -36,42 +35,91 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🧭 Category click handler (save to localStorage & redirect)
+  // 🧭 Handle Category Click
   const handleCategoryClick = (category) => {
     localStorage.setItem("selectedCategory", category);
     window.dispatchEvent(new CustomEvent("categoryChange", { detail: category }));
     navigate("/ProductDisplay");
     setDropdownOpen(false);
-    setSubDropdown(null);
     setOpen(false);
   };
 
-  // 🚪 Close dropdown when clicking outside
+  // 🚪 Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
-        setSubDropdown(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // 🔍 Search handler
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (!value.trim()) {
+      setSuggestions([]);
+      return;
+    }
+
+    const filtered = products.filter((p) =>
+      p.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setSuggestions(filtered.slice(0, 3));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) return;
+    navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+    setSuggestions([]);
+    setSearchTerm("");
+  };
+
+  const handleSelectSuggestion = (name) => {
+    navigate(`/search?query=${encodeURIComponent(name)}`);
+    setSuggestions([]);
+    setSearchTerm("");
+  };
+
   return (
     <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <div className="container">
-        {/* Logo */}
+        {/* 🧴 Logo */}
         <NavLink className="logo" to="/" onClick={() => setOpen(false)}>
-          <img src={Logo} alt="LeoGuard" />
+          <img src={Logo} alt="LeoGard" />
         </NavLink>
 
-        {/* Mobile toggle */}
+        {/* 🔍 Search Bar (Visible on desktop top row) */}
+        <form className="search-bar desktop-search" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button type="submit">🔍</button>
+
+          {suggestions.length > 0 && (
+            <ul className="suggestions">
+              {suggestions.map((item, index) => (
+                <li key={index} onClick={() => handleSelectSuggestion(item.name)}>
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </form>
+
+        {/* 🍔 Mobile Toggle */}
         <div className="menu-toggle" onClick={() => setOpen(!open)}>
           {open ? "✕" : "☰"}
         </div>
 
-        {/* Nav links */}
+        {/* 🧭 Nav Links */}
         <ul className={`nav-links ${open ? "open" : ""}`}>
           <li>
             <NavLink to="/" end onClick={() => setOpen(false)}>
@@ -89,52 +137,19 @@ const Navbar = () => {
               if (window.innerWidth <= 992) setDropdownOpen(!dropdownOpen);
             }}
           >
-            <span className="drop-toggle">Product Categories ▾</span>
+            <span className="drop-toggle">Categories ▾</span>
 
             {dropdownOpen && (
-              <div className="dropdown-menu">
-                {/* Level 1 - Section/Indication Based */}
-                <div
-                  className="dropdown-item"
-                  onMouseEnter={() => setSubDropdown("section")}
-                  onMouseLeave={() => setSubDropdown(null)}
-                >
-                  Section Based ▸
-                  {subDropdown === "section" && sectionCategories.length > 0 && (
-                    <div className="sub-dropdown">
-                      {sectionCategories.map((cat) => (
-                        <button
-                          key={cat.id}
-                          className="dropdown-link"
-                          onClick={() => handleCategoryClick(cat.name)}
-                        >
-                          {cat.name}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div
-                  className="dropdown-item"
-                  onMouseEnter={() => setSubDropdown("indication")}
-                  onMouseLeave={() => setSubDropdown(null)}
-                >
-                  Indication Based ▸
-                  {subDropdown === "indication" && indicationCategories.length > 0 && (
-                    <div className="sub-dropdown">
-                      {indicationCategories.map((cat) => (
-                        <button
-                          key={cat.id}
-                          className="dropdown-link"
-                          onClick={() => handleCategoryClick(cat.name)}
-                        >
-                          {cat.name}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className="dropdown-grid scrollable-dropdown">
+                {allCategories.map((cat, i) => (
+                  <button
+                    key={i}
+                    className="dropdown-link"
+                    onClick={() => handleCategoryClick(cat)}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
             )}
           </li>
@@ -144,11 +159,33 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/contact" onClick={() => setOpen(false)}>
               Contact Us
             </NavLink>
+          </li>
+
+          {/* 🔍 Mobile Search Below Logo */}
+          <li className="mobile-search">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+              <button type="submit">🔍</button>
+
+              {suggestions.length > 0 && (
+                <ul className="suggestions">
+                  {suggestions.map((item, index) => (
+                    <li key={index} onClick={() => handleSelectSuggestion(item.name)}>
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </form>
           </li>
         </ul>
       </div>
