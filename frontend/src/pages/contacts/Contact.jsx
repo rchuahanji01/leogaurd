@@ -181,12 +181,12 @@ const Contact = () => {
             <h3>WhatsApp</h3>
             <p>
               <a
-                href="https://wa.me/918369262375"
+                href="https://wa.me/919223803963"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-link"
               >
-                +91 83692 62375
+                ++91 92238 03963
               </a>
             </p>
           </div>

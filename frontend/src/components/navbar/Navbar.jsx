@@ -92,7 +92,7 @@ const Navbar = () => {
         <NavLink className="logo" to="/" onClick={() => setOpen(false)}>
           <img src={Logo} alt="LeoGard" />
         </NavLink>
-
+    
         {/* 🔍 Search Bar (Visible on desktop top row) */}
         <form className="search-bar desktop-search" onSubmit={handleSubmit}>
           <input
@@ -113,7 +113,27 @@ const Navbar = () => {
             </ul>
           )}
         </form>
+          <div className="mobile-search11">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+              <button type="submit">🔍</button>
 
+              {suggestions.length > 0 && (
+                <ul className="suggestions11">
+                  {suggestions.map((item, index) => (
+                    <li key={index} onClick={() => handleSelectSuggestion(item.name)}>
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </form>
+          </div>
         {/* 🍔 Mobile Toggle */}
         <div className="menu-toggle" onClick={() => setOpen(!open)}>
           {open ? "✕" : "☰"}
@@ -166,27 +186,7 @@ const Navbar = () => {
           </li>
 
           {/* 🔍 Mobile Search Below Logo */}
-          <li className="mobile-search">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-              <button type="submit">🔍</button>
-
-              {suggestions.length > 0 && (
-                <ul className="suggestions">
-                  {suggestions.map((item, index) => (
-                    <li key={index} onClick={() => handleSelectSuggestion(item.name)}>
-                      {item.name}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </form>
-          </li>
+          
         </ul>
       </div>
     </nav>

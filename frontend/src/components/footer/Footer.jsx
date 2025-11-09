@@ -28,8 +28,8 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="footer-contact">
           <h3>Contact Us</h3>
-          <p>Email: info@LeoGardpharma.com</p>
-          <p>Phone: +91 98765 43210</p>
+          <p>Email: leogardp@gmail.com</p>
+          <p>Phone: +91 92238 03963</p>
           <p>Address: Mumbai, India</p>
         </div>
 
