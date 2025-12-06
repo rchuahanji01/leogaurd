@@ -28,7 +28,7 @@ const Home = () => {
     <AboutSection/>
     <ProductCarousel/>
     <Who/>
-    <Testimonial/>
+    {/* <Testimonial/> */}
     </>
   )
 }

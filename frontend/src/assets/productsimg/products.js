@@ -507,23 +507,23 @@ export const products = [
   images: [kerelokb],
   createdAt: "2025-11-09T10:45:00.000Z",
 },
-{
-  id: "keraleo-ahf",
-  name: "Keraleo AHF Conditioning Shampoo",
-  ingredients:
-    "Saw Palmetto, Biotin, Caffeine, Argan Oil, No Paraben, No Sulphate",
-  description:
-    "Keraleo AHF Conditioning Shampoo is a gentle, paraben- and sulphate-free formula designed to strengthen hair while improving texture and shine. Enriched with Saw Palmetto and Caffeine, it supports healthy hair growth and hydration.",
-  indications: [
-    "Nourishes and strengthens hair from roots to ends",
-    "Improves scalp health and hydration",
-    "Promotes thicker, shinier hair",
-    "Free from parabens and sulphates",
-  ],
-  category: "Shampoo",
-  images: [kerelof],
-  createdAt: "2025-11-09T10:50:00.000Z",
-},
+// {
+//   id: "keraleo-ahf",
+//   name: "Keraleo AHF Conditioning Shampoo",
+//   ingredients:
+//     "Saw Palmetto, Biotin, Caffeine, Argan Oil, No Paraben, No Sulphate",
+//   description:
+//     "Keraleo AHF Conditioning Shampoo is a gentle, paraben- and sulphate-free formula designed to strengthen hair while improving texture and shine. Enriched with Saw Palmetto and Caffeine, it supports healthy hair growth and hydration.",
+//   indications: [
+//     "Nourishes and strengthens hair from roots to ends",
+//     "Improves scalp health and hydration",
+//     "Promotes thicker, shinier hair",
+//     "Free from parabens and sulphates",
+//   ],
+//   category: "Shampoo",
+//   images: [kerelof],
+//   createdAt: "2025-11-09T10:50:00.000Z",
+// },
 /// ====================== skin care
   {
     id: "qtiphil-foam",
