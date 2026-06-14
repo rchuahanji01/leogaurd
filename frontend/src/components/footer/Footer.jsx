@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="footer-contact">
           <h3>Contact Us</h3>
           <p>Email: leogardp@gmail.com</p>
-          <p>Phone: +91 92238 03963</p>
+          <p>Phone: +91 8452-803963</p>
           <p>Address: Mumbai, India</p>
         </div>
 
@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} LeoGard Pharmaceuticals. All Rights Reserved.</p>
+        {/* <p>© {new Date().getFullYear()} LeoGard Pharmaceuticals. All Rights Reserved.</p> */}
       </div>
     </footer>
   );

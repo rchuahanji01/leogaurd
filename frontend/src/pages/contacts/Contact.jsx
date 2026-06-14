@@ -186,7 +186,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="whatsapp-link"
               >
-                ++91 92238 03963
+                ++91 8452-803963
               </a>
             </p>
           </div>
